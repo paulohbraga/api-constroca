@@ -26,6 +26,7 @@ public class Usuario implements Serializable{
 	private String login_usuario;
 	private String password;
 	private String email;
+	@JsonIgnore
 	private String cpf;
 	private String telefone;
 	private String cidade;
@@ -93,6 +94,7 @@ public class Usuario implements Serializable{
 		this.email = email;
 	}
 
+	
 	public String getCpf() {
 		return cpf;
 	}
