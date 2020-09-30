@@ -24,6 +24,7 @@ public class Usuario implements Serializable{
 	private Long id;
 	private String nome;
 	private String login_usuario;
+	@JsonIgnore
 	private String password;
 	private String email;
 	@JsonIgnore
