@@ -93,7 +93,6 @@ public class Usuario implements Serializable{
 		this.email = email;
 	}
 
-	@JsonIgnore
 	public String getCpf() {
 		return cpf;
 	}
@@ -126,6 +125,7 @@ public class Usuario implements Serializable{
 		this.avatar = avatar;
 	}
 
+	@JsonIgnore
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
