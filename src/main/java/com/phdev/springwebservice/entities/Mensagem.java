@@ -27,23 +27,22 @@ public class Mensagem implements Serializable{
 	@JoinColumn(name = "chat_id")
 	private Chat chat;
 	private String mensagem;	
-	private Long sender;
-	private Long receiver;
+	private Integer sender;
+	private Integer receiver;
 	private Instant instant;
 	
 	public Mensagem(){
 	}
 
-	public Mensagem(Long id, Chat chat, String mensagem, Usuario sender, Usuario receiver) {
+	public Mensagem(Long id, Chat chat, String mensagem, Integer sender, Integer receiver) {
 		super();
 		this.id = id;
 		this.chat = chat;
 		this.mensagem = mensagem;
-		this.sender = sender.getId();
-		this.receiver = receiver.getId();
+		this.sender = sender;
+		this.receiver = receiver;
 		this.instant = Instant.now();
 	}
-	@JsonIgnore
 	public Long getId() {
 		return id;
 	}
@@ -51,9 +50,8 @@ public class Mensagem implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	@JsonIgnore
-	public Chat getChat() {
-		return chat;
+	public Long getChat() {
+		return chat.getId();
 	}
 
 	public void setChat(Chat chat) {
@@ -68,28 +66,28 @@ public class Mensagem implements Serializable{
 		this.mensagem = mensagem;
 	}
 
-	public Long getSender() {
+	public Integer getSender() {
 		return sender;
 	}
 
-	public void setSender(Usuario sender) {
-		this.sender = sender.getId();
+	public void setSender(Integer sender) {
+		this.sender = sender;
 	}
 
-	public Long getReceiver() {
+	public Integer getReceiver() {
 		return receiver;
 	}
 
-	public void setReceiver(Usuario receiver) {
-		this.receiver = receiver.getId(); 
+	public void setReceiver(Integer receiver) {
+		this.receiver = receiver; 
 	}
 
 	public Instant getInstant() {
-		return instant;
+		return Instant.now();
 	}
 
 	public void setInstant(Instant instant) {
-		this.instant = instant;
+		this.instant = Instant.now();
 	}
 
 	public static long getSerialversionuid() {

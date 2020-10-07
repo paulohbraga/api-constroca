@@ -1,6 +1,7 @@
 package com.phdev.springwebservice.resources;
 
 import java.net.URI;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,10 +21,12 @@ import com.phdev.springwebservice.entities.Chat;
 import com.phdev.springwebservice.entities.Mensagem;
 import com.phdev.springwebservice.entities.Produto;
 import com.phdev.springwebservice.entities.Usuario;
+import com.phdev.springwebservice.exceptions.ResourceNotFoundException;
 import com.phdev.springwebservice.repositories.ChatRepository;
 import com.phdev.springwebservice.repositories.MensagemRepository;
 import com.phdev.springwebservice.repositories.UsuarioRepository;
 import com.phdev.springwebservice.services.UsuarioService;
+import com.sun.mail.handlers.message_rfc822;
 
 @RestController
 public class MensagemResourceTest {
@@ -31,6 +34,10 @@ public class MensagemResourceTest {
 	@Autowired
 	private MensagemRepository mensagemRepository;
 	
+	
+	@Autowired
+	private ChatRepository chatRepository;
+
 	@GetMapping("/mensagens/{id}")
 	public ResponseEntity<List<Mensagem>> findAll(@PathVariable Long id){
 		
@@ -39,23 +46,24 @@ public class MensagemResourceTest {
 		
 	}
 	
-//	@GetMapping("/mensagens/{id}")
-//	public ResponseEntity<Optional<Mensagem>> findUserById(@PathVariable Long id){
-//		
-//		Optional<Mensagem> objUsuario = mensagemRepository.findAllById(ids)
-//		
-//		return ResponseEntity.ok().body(objUsuario);
-//	}
-//	
-//	@PostMapping("/usuarios")
-//	public ResponseEntity<Usuario> createUser(@RequestBody Usuario usuario){
-//		
-//		usuario = usuarioRepository.save(usuario);
-//		
-//		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri();
-//
-//		return ResponseEntity.created(uri).body(usuario);
-//		
-//	}
+	@PostMapping("/mensagens")
+	public ResponseEntity<Mensagem> createUser(@RequestBody Mensagem mensagem){
+		
+		mensagem = mensagemRepository.save(mensagem);
+		
+
+		return ResponseEntity.ok().body(mensagem);
+		
+	}
+	
+	@PostMapping("/chat/{id_chat}/mensagens")
+	public Mensagem createMessage(@PathVariable  Long id_chat,
+			@RequestBody Mensagem mensagem) {
+		return chatRepository.findById(id_chat).map(chat -> {
+			mensagem.setInstant(Instant.now());
+			mensagem.setChat(chat);;
+			return mensagemRepository.save(mensagem);
+		}).orElseThrow(() -> new ResourceNotFoundException("ID usuário " + id_chat + " não encontrado "));
+	}
 
 }

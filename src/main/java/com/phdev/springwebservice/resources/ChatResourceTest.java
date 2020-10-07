@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.phdev.springwebservice.entities.Chat;
 import com.phdev.springwebservice.repositories.ChatRepository;
@@ -33,16 +36,15 @@ public class ChatResourceTest {
 		
 		return ResponseEntity.ok().body(objUsuario);
 	}
-//	
-//	@PostMapping("/usuarios")
-//	public ResponseEntity<Usuario> createUser(@RequestBody Usuario usuario){
-//		
-//		usuario = usuarioRepository.save(usuario);
-//		
-//		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri();
-//
-//		return ResponseEntity.created(uri).body(usuario);
-//		
-//	}
+	
+	@PostMapping("/chat")
+	public ResponseEntity<Chat> createUser(@RequestBody Chat chat){
+		
+		chat = chatRepository.save(chat);
+		
+
+		return ResponseEntity.ok().body(chat);
+		
+	}
 
 }
