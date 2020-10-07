@@ -28,7 +28,7 @@ public class UsuarioLoginResource {
 		if(idUser != null) {
 			tempUserId = idUser;
 			Optional<Usuario> objUsuario = usuario_LoginRepository.findById(tempUserId);
-			objUsuario.get().setToken("token: jdijsidjsdijsidjsidjsijdisdjisdsidjisid");
+			
 			return ResponseEntity.ok().body(objUsuario);
 		}else {
 			Optional<Usuario> userNullUsuario = Optional.ofNullable(new Usuario());
