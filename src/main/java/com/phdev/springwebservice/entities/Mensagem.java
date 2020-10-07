@@ -1,6 +1,7 @@
 package com.phdev.springwebservice.entities;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,6 +29,7 @@ public class Mensagem implements Serializable{
 	private String mensagem;	
 	private Long sender;
 	private Long receiver;
+	private Instant instant;
 	
 	public Mensagem(){
 	}
@@ -39,6 +41,7 @@ public class Mensagem implements Serializable{
 		this.mensagem = mensagem;
 		this.sender = sender.getId();
 		this.receiver = receiver.getId();
+		this.instant = Instant.now();
 	}
 	@JsonIgnore
 	public Long getId() {
@@ -79,6 +82,14 @@ public class Mensagem implements Serializable{
 
 	public void setReceiver(Usuario receiver) {
 		this.receiver = receiver.getId(); 
+	}
+
+	public Instant getInstant() {
+		return instant;
+	}
+
+	public void setInstant(Instant instant) {
+		this.instant = instant;
 	}
 
 	public static long getSerialversionuid() {

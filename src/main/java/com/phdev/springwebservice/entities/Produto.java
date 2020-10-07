@@ -54,7 +54,6 @@ public class Produto implements Serializable{
 	}
 	@JsonSerialize(using = ToStringSerializer.class)
 	public Long getId() {
-		System.out.println("get the id for product table fk");
 		return id;
 	}
 

@@ -18,7 +18,7 @@ import com.phdev.springwebservice.repositories.UsuarioRepository;
 
 
 @Configuration
-@Profile("prod")
+@Profile("test")
 public class TestConfig implements CommandLineRunner {
 
 	@Autowired
@@ -35,7 +35,7 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-//
+
 //		Usuario usuario1 = new Usuario(null, "Maria", "maria", "123", "maria@gmail.com", "231231231", "619999999" , "Brasília", "avatar.png");
 //		Usuario usuario2 = new Usuario(null, "Paulo Henrique", "phenrique", "123", "paulo@someletras.com.br", "123123123123", "619999999", "Brasilia", "avatar.png");
 //		Usuario usuario3 = new Usuario(null, "João", "joao", "123", "joao@gmail.com", "123123123123", "619999999", "Brasília", "avatar.png");
