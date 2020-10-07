@@ -31,10 +31,10 @@ public class MensagemResourceTest {
 	@Autowired
 	private MensagemRepository mensagemRepository;
 	
-	@GetMapping("/mensagens")
-	public ResponseEntity<List<Mensagem>> findAllProducts(){
+	@GetMapping("/mensagens/{id}")
+	public ResponseEntity<List<Mensagem>> findAll(@PathVariable Long id){
 		
-		List<Mensagem> list = mensagemRepository.findAll();	
+		List<Mensagem> list = mensagemRepository.findByChatId(id);	
 		return ResponseEntity.ok().body(list);
 		
 	}
