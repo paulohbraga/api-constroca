@@ -23,7 +23,6 @@ public class Chat implements Serializable {
 	private Long id;
 	private Integer sender;
 	private Integer receiver;
-	
 	@OneToMany(mappedBy = "chat")
 	private List<Mensagem> mensagens = new ArrayList<>();
 	

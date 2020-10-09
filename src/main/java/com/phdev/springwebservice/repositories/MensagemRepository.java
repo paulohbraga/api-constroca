@@ -11,7 +11,7 @@ import com.phdev.springwebservice.entities.Usuario;
 
 @Repository
 public interface MensagemRepository extends JpaRepository<Mensagem, Long> {
-	List<Mensagem> findByChatIdOrderByInstantAsc(Long id);
+	List<Mensagem> findTop20ByChatIdOrderByInstantAsc(Long id);
 
 
 }
