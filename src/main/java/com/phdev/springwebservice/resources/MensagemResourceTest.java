@@ -41,7 +41,7 @@ public class MensagemResourceTest {
 	@GetMapping("/mensagens/{id}")
 	public ResponseEntity<List<Mensagem>> findAll(@PathVariable Long id){
 		
-		List<Mensagem> list = mensagemRepository.findTop20ByChatIdOrderByInstantAsc(id);	
+		List<Mensagem> list = mensagemRepository.findByChatIdOrderByInstantAsc(id);	
 		return ResponseEntity.ok().body(list);
 		
 	}
