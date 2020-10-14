@@ -51,9 +51,9 @@ public class ChatResourceTest {
 	public ResponseEntity<Chat> createRoom(@RequestBody Chat chat){
 
 		Boolean exists =  chatRepository.chatExists(chat.getSender(), chat.getReceiver());
-
+		Chat chat2 = new Chat();
 		if(exists) {
-			return ResponseEntity.ok().body(chat);
+			return ResponseEntity.ok().body(chat2);
 		}
 		chat = chatRepository.save(chat);
 
