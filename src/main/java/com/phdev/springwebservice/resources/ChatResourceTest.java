@@ -54,14 +54,14 @@ public class ChatResourceTest {
 		Long id =  chatRepository.chatExists(chat.getSender(), chat.getReceiver());
 		
 		if(id != null) {
-			Optional<Chat> chat3 = chatRepository.findById(id);
-			return ResponseEntity.ok().body(chat3);
+			Optional<Chat> findedChat = chatRepository.findById(id);
+			return ResponseEntity.ok().body(findedChat);
 		}else {
 			chat = chatRepository.save(chat);
 			
-			Optional<Chat> chat4 = chatRepository.findById(chat.getId());
+			Optional<Chat> newChat = chatRepository.findById(chat.getId());
 
-			return ResponseEntity.ok().body(chat4);
+			return ResponseEntity.ok().body(newChat);
 		}
 
 
