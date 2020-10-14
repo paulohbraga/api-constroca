@@ -53,7 +53,7 @@ public class ChatResourceTest {
 		Boolean exists =  chatRepository.chatExists(chat.getSender(), chat.getReceiver());
 
 		if(exists) {
-			return ResponseEntity.ok(new Chat());
+			return ResponseEntity.ok().body(chat);
 		}
 		chat = chatRepository.save(chat);
 
