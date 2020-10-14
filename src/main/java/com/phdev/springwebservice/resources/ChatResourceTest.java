@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.phdev.springwebservice.entities.Chat;
+import com.phdev.springwebservice.entities.Usuario;
 import com.phdev.springwebservice.repositories.ChatRepository;
 
 @RestController
@@ -48,16 +49,19 @@ public class ChatResourceTest {
 	//	}
 
 	@PostMapping("/chat")
-	public ResponseEntity<Chat> createRoom(@RequestBody Chat chat){
+	public ResponseEntity<Optional<Chat>> createRoom(@RequestBody Chat chat){
 
-		Boolean exists =  chatRepository.chatExists(chat.getSender(), chat.getReceiver());
-		Chat chat2 = new Chat();
-		if(exists) {
-			return ResponseEntity.ok().body(chat2);
+		Long id =  chatRepository.chatExists(chat.getSender(), chat.getReceiver());
+		
+		if(id != null) {
+			Optional<Chat> chat3 = chatRepository.findById(id);
+			return ResponseEntity.ok().body(chat3);
+		}else {
+			chat = chatRepository.save(chat);
+			Optional<Chat> chatNull = Optional.ofNullable(new Chat());
+			return ResponseEntity.ok().body(chatNull);
 		}
-		chat = chatRepository.save(chat);
 
-		return ResponseEntity.ok().body(chat);
 
 	}
 
