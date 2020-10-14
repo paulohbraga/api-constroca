@@ -37,9 +37,22 @@ public class ChatResourceTest {
 		return ResponseEntity.ok().body(objUsuario);
 	}
 	
+//	@PostMapping("/chat")
+//	public ResponseEntity<Chat> createUser(@RequestBody Chat chat){
+//		
+//		chat = chatRepository.save(chat);
+//		
+//
+//		return ResponseEntity.ok().body(chat);
+//		
+//	}
+	
 	@PostMapping("/chat")
-	public ResponseEntity<Chat> createUser(@RequestBody Chat chat){
+	public ResponseEntity<Chat> createRoom(@RequestBody Chat chat){
 		
+		Long id =  chatRepository.chatExists(chat.getSender(), chat.getReceiver());
+		
+		chat.setId(id + 1);
 		chat = chatRepository.save(chat);
 		
 

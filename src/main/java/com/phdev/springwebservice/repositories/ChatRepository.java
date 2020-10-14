@@ -1,13 +1,17 @@
 package com.phdev.springwebservice.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.phdev.springwebservice.entities.Chat;
-import com.phdev.springwebservice.entities.Usuario;
 
 @Repository
 public interface ChatRepository extends JpaRepository<Chat, Long> {
+	//select id from tb_chat tc where tc.receiver = 50 and tc.sender = 2 or tc.receiver = 2 and tc.sender = 50 ;
+    @Query("SELECT id FROM Chat c WHERE c.sender = :sender and c.receiver = :receiver or c.sender = :sender and c.receiver = :receiver ")
+    Long chatExists(@Param("sender") Integer integer, @Param("receiver") Integer integer2);
 	
 
 }
