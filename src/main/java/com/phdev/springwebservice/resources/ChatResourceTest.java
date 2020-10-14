@@ -54,9 +54,8 @@ public class ChatResourceTest {
 
 		if(exists) {
 			return ResponseEntity.ok(new Chat());
-		}else{
-			chat = chatRepository.save(chat);
 		}
+		chat = chatRepository.save(chat);
 
 		return ResponseEntity.ok().body(chat);
 
