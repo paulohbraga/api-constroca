@@ -58,8 +58,10 @@ public class ChatResourceTest {
 			return ResponseEntity.ok().body(chat3);
 		}else {
 			chat = chatRepository.save(chat);
-			Optional<Chat> chatNull = Optional.ofNullable(new Chat());
-			return ResponseEntity.ok().body(chatNull);
+			
+			Optional<Chat> chat4 = chatRepository.findById(chat.getId());
+
+			return ResponseEntity.ok().body(chat4);
 		}
 
 
