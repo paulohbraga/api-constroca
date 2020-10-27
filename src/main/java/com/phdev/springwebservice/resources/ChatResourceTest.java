@@ -50,17 +50,13 @@ public class ChatResourceTest {
 
 	@PostMapping("/chat")
 	public ResponseEntity<Optional<Chat>> createRoom(@RequestBody Chat chat){
-
-		Long id =  chatRepository.chatExists(chat.getSender(), chat.getReceiver());
-		
+		Long id =  chatRepository.chatExists(chat.getSender().getId(), chat.getReceiver().getId());
 		if(id != null) {
 			Optional<Chat> findedChat = chatRepository.findById(id);
 			return ResponseEntity.ok().body(findedChat);
 		}else {
-			chat = chatRepository.save(chat);
-			
+			chat = chatRepository.save(chat);	
 			Optional<Chat> newChat = chatRepository.findById(chat.getId());
-
 			return ResponseEntity.ok().body(newChat);
 		}
 

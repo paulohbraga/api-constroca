@@ -21,8 +21,8 @@ public class Chat implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Integer sender;
-	private Integer receiver;
+	private Usuario sender;
+	private Usuario receiver;
 	@OneToMany(mappedBy = "chat")
 	private List<Mensagem> mensagens = new ArrayList<>();
 	
@@ -33,7 +33,7 @@ public class Chat implements Serializable {
 	public Chat() {
 	}
 
-	public Chat(Long id, Integer sender, Integer receiver) {
+	public Chat(Long id, Usuario sender, Usuario receiver) {
 		super();
 		this.id = id;
 		this.sender = sender;
@@ -51,19 +51,19 @@ public class Chat implements Serializable {
 
 
 
-	public Integer getSender() {
+	public Usuario  getSender() {
 		return sender;
 	}
 
-	public void setSender(Integer sender) {
+	public void setSender(Usuario  sender) {
 		this.sender = sender;
 	}
 
-	public Integer getReceiver() {
+	public Usuario  getReceiver() {
 		return receiver;
 	}
 
-	public void setReceiver(Integer receiver) {
+	public void setReceiver(Usuario  receiver) {
 		this.receiver = receiver;
 	}
 
