@@ -16,4 +16,6 @@ public interface MensagemRepository extends JpaRepository<Mensagem, Long> {
 	List<Mensagem> findByChatIdOrderByInstantAsc(Long id);
     String findFirstSenderByChatId(Long id_chat);
 
+    
+    
 }
