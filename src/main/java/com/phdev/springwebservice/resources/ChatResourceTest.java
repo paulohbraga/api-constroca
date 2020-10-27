@@ -50,7 +50,7 @@ public class ChatResourceTest {
 
 	@PostMapping("/chat")
 	public ResponseEntity<Optional<Chat>> createRoom(@RequestBody Chat chat){
-		Long id =  chatRepository.chatExists(chat.getSender().getId(), chat.getReceiver().getId());
+		Long id =  chatRepository.chatExists(chat.getSender(), chat.getReceiver());
 		if(id != null) {
 			Optional<Chat> findedChat = chatRepository.findById(id);
 			return ResponseEntity.ok().body(findedChat);
