@@ -61,7 +61,7 @@ public class MensagemResourceTest {
 	@PostMapping("/chat/{id_chat}/mensagens")
 	public Mensagem createMessage(@PathVariable  Long id_chat,
 			@RequestBody Mensagem mensagem) {
-		String xString = mensagemRepository.findSenderByChatId(id_chat);
+		String xString = mensagemRepository.findFirstSenderByChatId(id_chat);
 		System.out.println(xString);
 		return chatRepository.findById(id_chat).map(chat -> {
 			mensagem.setInstant(Instant.now());
