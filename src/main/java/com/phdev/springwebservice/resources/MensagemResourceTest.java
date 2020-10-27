@@ -62,8 +62,6 @@ public class MensagemResourceTest {
 	public Mensagem createMessage(@PathVariable  Long id_chat,
 			@RequestBody Mensagem mensagem) {
 		return chatRepository.findById(id_chat).map(chat -> {
-			mensagem.setSender("Sender test");
-			mensagem.setReceiver("Receiver test");
 			mensagem.setInstant(Instant.now());
 			mensagem.setChat(chat);
 			return mensagemRepository.save(mensagem);

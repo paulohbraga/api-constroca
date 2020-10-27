@@ -27,14 +27,14 @@ public class Mensagem implements Serializable{
 	@JoinColumn(name = "chat_id")
 	private Chat chat;
 	private String mensagem;	
-	private String sender;
-	private String receiver;
+	private Integer sender;
+	private Integer receiver;
 	private Instant instant;
 	
 	public Mensagem(){
 	}
 
-	public Mensagem(Long id, Chat chat, String mensagem, String sender, String receiver) {
+	public Mensagem(Long id, Chat chat, String mensagem, Integer sender, Integer receiver) {
 		super();
 		this.id = id;
 		this.chat = chat;
@@ -66,19 +66,19 @@ public class Mensagem implements Serializable{
 		this.mensagem = mensagem;
 	}
 
-	public String getSender() {
+	public Integer getSender() {
 		return sender;
 	}
 
-	public void setSender(String sender) {
+	public void setSender(Integer sender) {
 		this.sender = sender;
 	}
 
-	public String getReceiver() {
+	public Integer getReceiver() {
 		return receiver;
 	}
 
-	public void setReceiver(String receiver) {
+	public void setReceiver(Integer receiver) {
 		this.receiver = receiver; 
 	}
 
