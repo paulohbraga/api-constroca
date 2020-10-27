@@ -62,7 +62,8 @@ public class MensagemResourceTest {
 	public Mensagem createMessage(@PathVariable  Long id_chat,
 			@RequestBody Mensagem mensagem) {
 		String xString = mensagemRepository.findSenderByChatId(id_chat);
-		System.out.println(xString);
+		String user = usuarioRepository.findUserById(Long.parseLong(xString));
+		System.out.println(user);
 		return chatRepository.findById(id_chat).map(chat -> {
 			mensagem.setInstant(Instant.now());
 			mensagem.setChat(chat);
