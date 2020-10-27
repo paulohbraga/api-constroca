@@ -14,8 +14,7 @@ import com.phdev.springwebservice.entities.Usuario;
 @Repository
 public interface MensagemRepository extends JpaRepository<Mensagem, Long> {
 	List<Mensagem> findByChatIdOrderByInstantAsc(Long id);
-    String findFirstSenderByChatId(Long id_chat);
+    @Query("SELECT sender FROM Mensagem m WHERE m.chat = 1")
+    String findSenderByChatId(Long id_chat);
 
-    
-    
 }
