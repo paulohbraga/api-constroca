@@ -62,9 +62,10 @@ public class MensagemResourceTest {
 	public Mensagem createMessage(@PathVariable  Long id_chat,
 			@RequestBody Mensagem mensagem) {
 		String xString = mensagemRepository.findSenderByChatId(id_chat);
-		String user = usuarioRepository.findUserById(Long.parseLong(xString));
-		System.out.println(user);
+		String sender = usuarioRepository.findUserById(Long.parseLong(xString));
+		System.out.println(sender);
 		return chatRepository.findById(id_chat).map(chat -> {
+			mensagem.setSender(sender);
 			mensagem.setInstant(Instant.now());
 			mensagem.setChat(chat);
 			return mensagemRepository.save(mensagem);
