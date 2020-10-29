@@ -13,10 +13,10 @@ public interface ChatRepository extends JpaRepository<Chat, Long> {
     @Query("SELECT id FROM Chat c WHERE c.sender = :sender and c.receiver = :receiver or c.sender = :sender and c.receiver = :receiver ")
     Long chatExists(@Param("sender") Integer integer, @Param("receiver") Integer integer2);
     
-    @Query(value = "SELECT sender FROM tb_chat m WHERE m.id = 75 LIMIT 1", nativeQuery=true)
-    Long findSenderByChatId(Long id_chat);
-    @Query(value = "SELECT receiver FROM tb_chat m WHERE m.id = 75 LIMIT 1", nativeQuery=true)
-    Long findReceiverByChatId(Long id_chat);
+    @Query(value = "SELECT sender FROM tb_chat m WHERE m.id = :id LIMIT 1", nativeQuery=true)
+    Long findSenderByChatId(@Param("id") Long id_chat);
+    @Query(value = "SELECT receiver FROM tb_chat m WHERE m.id = :id LIMIT 1", nativeQuery=true)
+    Long findReceiverByChatId(@Param("id") Long id_chat);
 	
 
 }
