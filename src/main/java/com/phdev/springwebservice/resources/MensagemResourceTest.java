@@ -74,8 +74,8 @@ public class MensagemResourceTest {
 		
 		return chatRepository.findById(id_chat).map(chat -> {
 			mensagem.setInstant(Instant.now());
-			mensagem.setSender(a.toString());
-			mensagem.setReceiver(b.toString());
+			mensagem.setSender("50");
+			mensagem.setReceiver("93");
 			mensagem.setName_sender(userString);
 			mensagem.setName_receiver(userRString);
 			mensagem.setChat(chat);
