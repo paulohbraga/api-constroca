@@ -62,11 +62,11 @@ public class MensagemResourceTest {
 	public Mensagem createMessage(@PathVariable  Long id_chat,
 			@RequestBody Mensagem mensagem) {
 		
-//		Long a =  chatRepository.findSenderByChatId(id_chat);
-//		Long b =  chatRepository.findReceiverByChatId(id_chat);
-//		
-//		System.out.println(a);
-//		System.out.println(b);
+		Long a =  chatRepository.findSenderByChatId(id_chat);
+		Long b =  chatRepository.findReceiverByChatId(id_chat);
+		
+		System.out.println(a);
+		System.out.println(b);
 //		
 //		String userString = usuarioRepository.findUserById(a);
 //		String userRString = usuarioRepository.findUserById(b);
