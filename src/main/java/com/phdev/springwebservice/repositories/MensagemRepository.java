@@ -16,5 +16,6 @@ public interface MensagemRepository extends JpaRepository<Mensagem, Long> {
 	List<Mensagem> findByChatIdOrderByInstantAsc(Long id);
     @Query(value = "SELECT sender FROM tb_mensagens m WHERE m.chat_id = 78 LIMIT 1", nativeQuery=true)
     String findSenderByChatId(Long id_chat);
-
+    @Query(value = "SELECT receiver FROM tb_mensagens m WHERE m.chat_id = 78 LIMIT 1", nativeQuery=true)
+    String findReceiverByChatId(Long id_chat);
 }

@@ -63,9 +63,12 @@ public class MensagemResourceTest {
 			@RequestBody Mensagem mensagem) {
 		String sender = mensagemRepository.findSenderByChatId(id_chat);
 		String userString = usuarioRepository.findUserById(Long.parseLong(sender));
+		String receiver = mensagemRepository.findReceiverByChatId(id_chat);
+		String userRString = usuarioRepository.findUserById(Long.parseLong(receiver));
 		return chatRepository.findById(id_chat).map(chat -> {
 			mensagem.setInstant(Instant.now());
 			mensagem.setName_sender(userString);
+			mensagem.setName_receiver(userRString);
 			mensagem.setChat(chat);
 			return mensagemRepository.save(mensagem);
 		}).orElseThrow(() -> new ResourceNotFoundException("ID usuário " + id_chat + " não encontrado "));
