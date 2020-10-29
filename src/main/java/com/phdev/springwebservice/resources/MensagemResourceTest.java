@@ -68,8 +68,11 @@ public class MensagemResourceTest {
 		System.out.println(a);
 		System.out.println(b);
 //		
-//		String userString = usuarioRepository.findUserById(a);
-//		String userRString = usuarioRepository.findUserById(b);
+		String userSender = usuarioRepository.findUserById(a);
+		String userReceiver = usuarioRepository.findUserById(b);
+		
+		System.out.println(userSender);
+		System.out.println(userReceiver);
 //		
 //		
 		return chatRepository.findById(id_chat).map(chat -> {
