@@ -77,12 +77,10 @@ public class MensagemResourceTest {
 //		
 		return chatRepository.findById(id_chat).map(chat -> {
 			mensagem.setInstant(Instant.now());
-			
-//			mensagem.setSender(a.toString());
-//			
-//			mensagem.setReceiver(b.toString());
-//			mensagem.setName_sender(userString);
-//			mensagem.setName_receiver(userRString);
+			mensagem.setSender(Long.toString(a));
+			mensagem.setReceiver(Long.toString(b));
+			mensagem.setName_sender(userSender);
+			mensagem.setName_receiver(userReceiver);
 			mensagem.setChat(chat);
 			return mensagemRepository.save(mensagem);
 		}).orElseThrow(() -> new ResourceNotFoundException("ID usuário " + id_chat + " não encontrado "));
