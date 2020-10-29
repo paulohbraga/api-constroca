@@ -68,14 +68,14 @@ public class MensagemResourceTest {
 		System.out.println(a);
 		System.out.println(b);
 
-		String userString = usuarioRepository.findUserById(a);
-		String userRString = usuarioRepository.findUserById(b);
-		
-		
+		String sender = mensagemRepository.findSenderByChatId(id_chat);
+		System.out.println(sender);
+		String userString = usuarioRepository.findUserById(Long.parseLong(sender));
+		String receiver = mensagemRepository.findReceiverByChatId(id_chat);
+		System.out.println(receiver);
+		String userRString = usuarioRepository.findUserById(Long.parseLong(receiver));
 		return chatRepository.findById(id_chat).map(chat -> {
 			mensagem.setInstant(Instant.now());
-			//mensagem.setSender("50");
-			//mensagem.setReceiver("93");
 			mensagem.setName_sender(userString);
 			mensagem.setName_receiver(userRString);
 			mensagem.setChat(chat);
