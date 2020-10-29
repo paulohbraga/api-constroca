@@ -29,20 +29,26 @@ public class Mensagem implements Serializable{
 	private String mensagem;	
 	private String sender;
 	private String receiver;
+	private String name_sender;
+	private String name_receiver;
 	private Instant instant;
 	
 	public Mensagem(){
 	}
 
-	public Mensagem(Long id, Chat chat, String mensagem, String sender, String receiver) {
+	public Mensagem(Long id, Chat chat, String mensagem, String sender, String receiver, String name_sender,
+			String name_receiver) {
 		super();
 		this.id = id;
 		this.chat = chat;
 		this.mensagem = mensagem;
 		this.sender = sender;
 		this.receiver = receiver;
-		this.instant = Instant.now();
+		this.name_sender = name_sender;
+		this.name_receiver = name_receiver;
 	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -92,6 +98,22 @@ public class Mensagem implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getName_sender() {
+		return name_sender;
+	}
+
+	public void setName_sender(String name_sender) {
+		this.name_sender = name_sender;
+	}
+
+	public String getName_receiver() {
+		return name_receiver;
+	}
+
+	public void setName_receiver(String name_receiver) {
+		this.name_receiver = name_receiver;
 	}
 	
 
