@@ -34,6 +34,8 @@ public class MensagemResourceTest {
 	@Autowired
 	private MensagemRepository mensagemRepository;
 	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 	@Autowired
 	private ChatRepository chatRepository;
@@ -60,8 +62,9 @@ public class MensagemResourceTest {
 	public Mensagem createMessage(@PathVariable  Long id_chat,
 			@RequestBody Mensagem mensagem) {
 		String sender = mensagemRepository.findSenderByChatId(id_chat);
+		String userString = usuarioRepository.findUserById(Long.parseLong(sender));
 		return chatRepository.findById(id_chat).map(chat -> {
-			mensagem.setSender(mensagemRepository.findSenderByChatId(id_chat));
+			mensagem.setSender(userString);
 			mensagem.setInstant(Instant.now());
 			mensagem.setChat(chat);
 			return mensagemRepository.save(mensagem);
