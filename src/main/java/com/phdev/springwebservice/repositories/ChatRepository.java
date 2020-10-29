@@ -14,9 +14,9 @@ public interface ChatRepository extends JpaRepository<Chat, Long> {
     Long chatExists(@Param("sender") Integer integer, @Param("receiver") Integer integer2);
     
     @Query(value = "SELECT sender FROM tb_chat m WHERE m.id = 78 LIMIT 1", nativeQuery=true)
-    Integer findSenderByChatId(Long id_chat);
+    Long findSenderByChatId(Long id_chat);
     @Query(value = "SELECT receiver FROM tb_chat m WHERE m.id = 78 LIMIT 1", nativeQuery=true)
-    Integer findReceiverByChatId(Long id_chat);
+    Long findReceiverByChatId(Long id_chat);
 	
 
 }
