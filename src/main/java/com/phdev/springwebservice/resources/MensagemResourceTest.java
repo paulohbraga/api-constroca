@@ -61,6 +61,13 @@ public class MensagemResourceTest {
 	@PostMapping("/chat/{id_chat}/mensagens")
 	public Mensagem createMessage(@PathVariable  Long id_chat,
 			@RequestBody Mensagem mensagem) {
+		
+		Integer a =  chatRepository.findSenderByChatId(id_chat);
+		Integer b =  chatRepository.findReceiverByChatId(id_chat);
+		
+		System.out.println(a);
+		System.out.println(b);
+
 		String sender = mensagemRepository.findSenderByChatId(id_chat);
 		System.out.println(sender);
 		String userString = usuarioRepository.findUserById(Long.parseLong(sender));
