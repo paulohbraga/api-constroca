@@ -62,24 +62,24 @@ public class MensagemResourceTest {
 	public Mensagem createMessage(@PathVariable  Long id_chat,
 			@RequestBody Mensagem mensagem) {
 		
-		Long a =  chatRepository.findSenderByChatId(id_chat);
-		Long b =  chatRepository.findReceiverByChatId(id_chat);
-		
-		System.out.println(a);
-		System.out.println(b);
-		
-		String userString = usuarioRepository.findUserById(a);
-		String userRString = usuarioRepository.findUserById(b);
-		
-		
+//		Long a =  chatRepository.findSenderByChatId(id_chat);
+//		Long b =  chatRepository.findReceiverByChatId(id_chat);
+//		
+//		System.out.println(a);
+//		System.out.println(b);
+//		
+//		String userString = usuarioRepository.findUserById(a);
+//		String userRString = usuarioRepository.findUserById(b);
+//		
+//		
 		return chatRepository.findById(id_chat).map(chat -> {
 			mensagem.setInstant(Instant.now());
 			
-			mensagem.setSender(a.toString());
-			
-			mensagem.setReceiver(b.toString());
-			mensagem.setName_sender(userString);
-			mensagem.setName_receiver(userRString);
+//			mensagem.setSender(a.toString());
+//			
+//			mensagem.setReceiver(b.toString());
+//			mensagem.setName_sender(userString);
+//			mensagem.setName_receiver(userRString);
 			mensagem.setChat(chat);
 			return mensagemRepository.save(mensagem);
 		}).orElseThrow(() -> new ResourceNotFoundException("ID usuário " + id_chat + " não encontrado "));
