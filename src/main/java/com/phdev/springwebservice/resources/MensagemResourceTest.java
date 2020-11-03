@@ -55,8 +55,11 @@ public class MensagemResourceTest {
 		System.out.println(a);
 		System.out.println(b);
 		
-		String avatar = usuarioRepository.findUserAvatarById(a);
-		System.out.println(avatar);
+		String avatarSender = usuarioRepository.findUserAvatarById(a);
+		System.out.println(avatarSender);		
+		String avatarReceiver = usuarioRepository.findUserAvatarById(b);
+		System.out.println(avatarReceiver);
+		
 		String userSender = usuarioRepository.findUserById(a);
 		String userReceiver = usuarioRepository.findUserById(b);
 		
@@ -70,9 +73,11 @@ public class MensagemResourceTest {
 			//mensagem.setReceiver(Long.toString(b));
 			mensagem.setName_sender(userSender);
 			mensagem.setName_receiver(userReceiver);
+			mensagem.setAvatar_sender(avatarSender);
+			mensagem.setAvatar_receiver(avatarReceiver);
 			mensagem.setChat(chat);
 			return mensagemRepository.save(mensagem);
-		}).orElseThrow(() -> new ResourceNotFoundException("ID usuário " + id_chat + " não encontrado "));
+		}).orElseThrow(() -> new ResourceNotFoundException("ID chat " + id_chat + " não encontrado "));
 	}
 
 }

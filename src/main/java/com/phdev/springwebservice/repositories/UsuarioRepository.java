@@ -13,4 +13,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query(value = "SELECT avatar FROM tb_usuario u WHERE u.id = :id_user", nativeQuery=true)
     String findUserAvatarById(Long id_user);
 
+
 }

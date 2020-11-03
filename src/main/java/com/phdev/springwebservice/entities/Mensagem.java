@@ -29,13 +29,17 @@ public class Mensagem implements Serializable{
 	private String receiver;
 	private String name_sender;
 	private String name_receiver;
+	private String avatar_sender;
+	private String avatar_receiver;
 	private Instant instant;
 	
 	public Mensagem(){
 	}
 
+
+
 	public Mensagem(Long id, Chat chat, String mensagem, String sender, String receiver, String name_sender,
-			String name_receiver) {
+			String name_receiver, String avatar_sender, String avatar_receiver) {
 		super();
 		this.id = id;
 		this.chat = chat;
@@ -44,7 +48,10 @@ public class Mensagem implements Serializable{
 		this.receiver = receiver;
 		this.name_sender = name_sender;
 		this.name_receiver = name_receiver;
+		this.avatar_sender = avatar_sender;
+		this.avatar_receiver = avatar_receiver;
 	}
+
 
 
 	public Long getId() {
@@ -112,6 +119,22 @@ public class Mensagem implements Serializable{
 
 	public void setName_receiver(String name_receiver) {
 		this.name_receiver = name_receiver;
+	}
+
+	public String getAvatar_sender() {
+		return avatar_sender;
+	}
+
+	public void setAvatar_sender(String avatar_sender) {
+		this.avatar_sender = avatar_sender;
+	}
+
+	public String getAvatar_receiver() {
+		return avatar_receiver;
+	}
+
+	public void setAvatar_receiver(String avatar_receiver) {
+		this.avatar_receiver = avatar_receiver;
 	}
 	
 
