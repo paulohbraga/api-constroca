@@ -54,7 +54,9 @@ public class MensagemResourceTest {
 		
 		System.out.println(a);
 		System.out.println(b);
-	
+		
+		String avatar = usuarioRepository.findUserAvatarById(a);
+		System.out.println(avatar);
 		String userSender = usuarioRepository.findUserById(a);
 		String userReceiver = usuarioRepository.findUserById(b);
 		
