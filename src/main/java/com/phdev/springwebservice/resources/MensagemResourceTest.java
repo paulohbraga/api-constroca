@@ -1,32 +1,19 @@
 package com.phdev.springwebservice.resources;
 
-import java.net.URI;
 import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import com.phdev.springwebservice.entities.Chat;
 import com.phdev.springwebservice.entities.Mensagem;
-import com.phdev.springwebservice.entities.Produto;
-import com.phdev.springwebservice.entities.Usuario;
 import com.phdev.springwebservice.exceptions.ResourceNotFoundException;
 import com.phdev.springwebservice.repositories.ChatRepository;
 import com.phdev.springwebservice.repositories.MensagemRepository;
 import com.phdev.springwebservice.repositories.UsuarioRepository;
-import com.phdev.springwebservice.services.UsuarioService;
-import com.sun.mail.handlers.message_rfc822;
 
 @RestController
 public class MensagemResourceTest {
@@ -67,18 +54,18 @@ public class MensagemResourceTest {
 		
 		System.out.println(a);
 		System.out.println(b);
-//		
+	
 		String userSender = usuarioRepository.findUserById(a);
 		String userReceiver = usuarioRepository.findUserById(b);
 		
 		System.out.println(userSender);
 		System.out.println(userReceiver);
-//		
-//		
+		
+	
 		return chatRepository.findById(id_chat).map(chat -> {
 			mensagem.setInstant(Instant.now());
-			mensagem.setSender(Long.toString(a));
-			mensagem.setReceiver(Long.toString(b));
+			//mensagem.setSender(Long.toString(a));
+			//mensagem.setReceiver(Long.toString(b));
 			mensagem.setName_sender(userSender);
 			mensagem.setName_receiver(userReceiver);
 			mensagem.setChat(chat);
