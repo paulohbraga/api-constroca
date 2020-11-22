@@ -56,16 +56,7 @@ public class ProdutoResource {
 		
 		
 	}
-	
-	@PostMapping("/usuarios/{id_usuario}/produtos")
-	public Produto updateUserProduct(@PathVariable  Long id_usuario,
-			@RequestBody Produto produto) {
-		return usuarioRepository.findById(id_usuario).map(usuario -> {
-			produto.setUsuario(usuario);
-			return produtoRepository.save(produto);
-		}).orElseThrow(() -> new ResourceNotFoundException("ID usuário " + id_usuario + " não encontrado "));
-	}
-	
+
 	@GetMapping("/usuarios/{id_usuario}/produtos")
 	public ResponseEntity<List<Produto>> getAllUserProducts(@PathVariable Long id_usuario){
 		
