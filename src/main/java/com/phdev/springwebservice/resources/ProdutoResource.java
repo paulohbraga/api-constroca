@@ -1,6 +1,7 @@
 package com.phdev.springwebservice.resources;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,7 +30,7 @@ public class ProdutoResource {
 	private UsuarioRepository usuarioRepository;
 	
 	
-	 @RequestMapping(value = "/")
+	@RequestMapping(value = "/")
 	    public String index() {
 	        return "Constroca";
 	    }
@@ -38,6 +39,14 @@ public class ProdutoResource {
 	public ResponseEntity<List<Produto>> findAllProducts(){
 		
 		List<Produto> list = produtoRepository.findAllByOrderByIdDesc();	
+		return ResponseEntity.ok().body(list);
+		
+	}
+	
+	@GetMapping("/produtos/{id}")
+	public ResponseEntity<Optional<Produto>> findProductById(@PathVariable Long id){
+		
+		Optional<Produto> list = produtoRepository.findById(id);	
 		return ResponseEntity.ok().body(list);
 		
 	}
