@@ -52,7 +52,7 @@ public class ProdutoResource {
 			prod.setTipo(produto.getTipo());
 			prod.setImagem(produto.getImagem());
 			prod.setUsuario(produto.getUsuario());
-			return produtoRepository.save(produto);
+			return produtoRepository.save(prod);
 		}).orElseThrow(() -> new ResourceNotFoundException("not found"));
 		
 		
