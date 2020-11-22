@@ -43,14 +43,29 @@ public class ProdutoResource {
 		
 	}
 	
-	@GetMapping("/produtos/{id}")
-	public ResponseEntity<Optional<Produto>> findProductById(@PathVariable Long id){
+	@PostMapping("/produtos/{id}")
+	public Produto updateProduct(@PathVariable Long id, @RequestBody Produto produto){
 		
-		Optional<Produto> list = produtoRepository.findById(id);	
-		return ResponseEntity.ok().body(list);
+		return produtoRepository.findById(id).map(prod ->{
+			prod.setDescricao_produto(produto.getDescricao_produto());
+			prod.setNome_produto(produto.getNome_produto());
+			prod.setTipo(produto.getTipo());
+			prod.setImagem(produto.getImagem());
+			return produtoRepository.save(produto);
+		}).orElseThrow(() -> new ResourceNotFoundException("not found"));
+		
 		
 	}
-
+	
+	@PostMapping("/usuarios/{id_usuario}/produtos")
+	public Produto updateUserProduct(@PathVariable  Long id_usuario,
+			@RequestBody Produto produto) {
+		return usuarioRepository.findById(id_usuario).map(usuario -> {
+			produto.setUsuario(usuario);
+			return produtoRepository.save(produto);
+		}).orElseThrow(() -> new ResourceNotFoundException("ID usuário " + id_usuario + " não encontrado "));
+	}
+	
 	@GetMapping("/usuarios/{id_usuario}/produtos")
 	public ResponseEntity<List<Produto>> getAllUserProducts(@PathVariable Long id_usuario){
 		
