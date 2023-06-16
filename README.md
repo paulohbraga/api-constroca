@@ -1,27 +1,25 @@
 ## api_constroca
 
-API REST Constroca
+Constroca REST API
 
-Disciplina de Projeto Integrador I e II do Curso Análise e Desenvolvimento de Sistemas - Centro Universitário de Brasília
+Integrated Project I and II Disciplines of Systems Analysis and Development Course - UniCEUB
 
 Professor/Scrum Master: Sérgio Cozetti
 
-Membros: Paulo Henrique Braga, Hélis Humeno.
+Members: Paulo Henrique Braga, Hélis Humeno.
 
 
-## Descrição
+## Description
 
-A app tem como objetivo permitir que os usuários se cadastrem e coloquem materiais de construção para troca ou doação. O back-end está sendo desenvolvindo em Java utilizando o framework Spring, serão disponibilizados endpoints
-para acesso aos produtos, login de usuário, cadastro de usuários e novos produtos. 
+The app aims to allow users to register and post construction materials for exchange or donation. The back-end is being developed in Java using the Spring framework and endpoints will be provided for accessing items, user login, user registration and new items creation.
 
 
-## Tecnologias utilizadas
+## Technologies
 
-- Linguagem: Java
+- Language: Java
 - Framework: Spring
-- SGBD: H2(dev), PostgreSQL(prod)
-- Dependências: Spring Boot Starter Web, Spring-boot-starter-web-services, Spring-boot-starter-data-jpa, Spring-boot-starter-mail, Springfox-swagger2.
-
+- DBMS: H2 (dev), PostgreSQL (prod)
+- Dependencies: Spring Boot Starter Web, Spring-boot-starter-web-services, Spring-boot-starter-data-jpa, Spring-boot-starter-mail, Springfox-swagger2.
 
 ## api_constroca 
 
